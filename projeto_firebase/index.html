@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MyMeds</title>
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,59 +19,60 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
+        integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="./js/index.js"></script>
+    <script src="./js/toast.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
+        integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand fw-light" href="#">MyMeds</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#" class="nav-link btn btn-light text-dark px-4">Login</a>
+                        <a href="#" class="nav-link btn btn-light text-dark px-3 shadow" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="mx-md-5 mx-2 mt-2 bg-primary bg-gradient rounded shadow text-light px-3 py-3">
+    <div class="mx-md-5 mx-2 mt-4 bg-primary bg-gradient rounded shadow text-light px-3 py-3">
         <div class="content table-responsive-md">
             <div class="row text-light mt-1 mb-4">
                 <div class="col-11">
                     <h2 class="h2 fw-light">Medicamentos</h2>
                 </div>
-                <div class="col-1 text-right">
-                    <button class="btn btn-outline-light" style="width: 100%;"><i class="bi bi-plus-lg"></i></button>
+                <div class="col-1 text-right text-end">
+                    <button class="btn btn-outline-light btn-sm shadow"><i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
 
-            <table class="table table-hover table-borderless text-light">
+            <table class="table shadow table-borderless text-light text-center">
                 <thead>
-                    <tr class="bg-dark bg-gradient">
+                    <tr class="bg-dark">
                         <th scope="col">#</th>
-                        <th scope="col">Medicamento</th>
-                        <th scope="col">Repetir a cada</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col">Unidade</th>
+                        <th scope="col"><i class="bi bi-ui-checks"></i> Medicamento</th>
+                        <th scope="col"><i class="bi bi-smartwatch"></i> Repetir a cada</th>
+                        <th scope="col"><i class="bi bi-eyedropper"></i> Quantidade</th>
+                        <th scope="col"><i class="bi bi-rulers"></i> Unidade</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,27 +80,97 @@
                         <th scope="row">1</th>
                         <td>Ibuprofeno</td>
                         <td>08h</td>
-                        <td>1 comprimido</td>
-                        <td>500mg</td>
+                        <td>1</td>
+                        <td>Comprimido</td>
+                        <td>
+                            <button class="btn btn-sm btn-light shadow"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-danger shadow"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">4</th>
                         <td>Paracetamol</td>
                         <td>06h</td>
-                        <td>1 comprimido</td>
-                        <td>200mg</td>
+                        <td>2</td>
+                        <td>Comprimido</td>
+                        <td>
+                            <button class="btn btn-sm btn-light shadow"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-danger shadow"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">7</th>
                         <td>Livotiroxina</td>
                         <td>12h</td>
-                        <td>30 gotas</td>
-                        <td>Gotas</td>
+                        <td>30</td>
+                        <td>Gota</td>
+                        <td>
+                            <button class="btn btn-sm btn-light shadow"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-sm btn-danger shadow"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formLogin">
+                        <div class="form-group mb-2">
+                            <label for="email"><i class="bi bi-envelope"></i> Email</label>
+                            <input type="email" required class="form-control" id="email" placeholder="Email">
+                            <div class="invalid-feedback" id="emailInvalid">
+                                Email nulo ou invalido!
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="bi bi-key"></i> Senha</label>
+                            <input type="password" required class="form-control" id="password" placeholder="****">
+                            <div class="invalid-feedback" id="senhaInvalid">
+                                Senha nula ou invalida!
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i>
+                        Fechar</button>
+                    <button type="button" onclick="formLoginExecSubmit()" class="btn btn-primary"><i
+                            class="bi bi-box-arrow-in-right"></i>
+                        Logar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdrop2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdrop2Label">Criar conta?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i>
+                        Cancelar</button>
+                    <button type="button" class="btn btn-primary">Criar Conta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
