@@ -1,0 +1,38 @@
+.container {
+    text-align: left;
+}
+
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    font-family: Arial;
+    font-size: 12px;
+    border: none;
+    border-collapse: collapse;
+}
+
+.title {
+    color: white;
+    background-color: #78b200 !important;
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(177, 177, 177, 0.336);
+  }
+  
+tr:nth-child(even) {
+    background-color: #fcf9f9ef;
+}
+
+.city {
+    color: #0D5188;    
+}
+
+.coluna_posicao {
+    width: 5%;
+}
+
+.coluna_populacao {
+    width: 15%;
+}

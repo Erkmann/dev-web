@@ -1,0 +1,11 @@
+.card {
+    border: 2px solid black;
+    line-height: 2;
+    font-size: 11px;
+    font-family: Helvetica;
+    color: rgb(2, 2, 139);
+}
+
+.text-center {
+    text-align: center;
+}
