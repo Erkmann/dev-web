@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyMeds</title>
 
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -23,8 +24,17 @@
         integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+
+    <script src="./js/firebase/firebase_connection.js"></script>
+
     <script src="./js/index.js"></script>
     <script src="./js/toast.js"></script>
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/global.css">
@@ -45,9 +55,13 @@
                 <ul class="navbar-nav me-auto">
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item" id="userEmailItem">
+                        <span id="userEmail" class="text-light nav-link">paciente.com</span>
+                    </li>
+                    <li class="nav-item" id="loginButton">
                         <a href="#" class="nav-link btn btn-light text-dark px-3 shadow" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                            data-bs-target="#staticBackdrop"><i id="navButtonIcon" class="bi bi-box-arrow-in-right"></i>
+                            <span id="NavButtonText">Login</span></a>
                     </li>
                 </ul>
             </div>
@@ -118,7 +132,7 @@
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="modalLogin">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
@@ -143,7 +157,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><i class="bi bi-x"></i>
+                    <button type="button" id="closeLogin" class="btn btn-outline-danger" data-bs-dismiss="modal"><i
+                            class="bi bi-x"></i>
                         Fechar</button>
                     <button type="button" onclick="formLoginExecSubmit()" class="btn btn-primary"><i
                             class="bi bi-box-arrow-in-right"></i>
